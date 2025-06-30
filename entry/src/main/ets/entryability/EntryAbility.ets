@@ -1,12 +1,22 @@
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import { LLog, LynxEnv } from '@lynx/lynx'
 
 const DOMAIN = 0x0000;
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+    // Init LynxEnv start
+    LLog.useSysLog(true);
+    LynxEnv.initialize(this.context);
+    let options = new Map<string, string>();
+    options.set('App', 'LynxExplorer');
+    options.set('AppVersion', '0.0.1');
+    LynxEnv.setAppInfo(options);
+    LynxEnv.enableDevtool(true);
+    // Init LynxEnv end
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
   }
 
