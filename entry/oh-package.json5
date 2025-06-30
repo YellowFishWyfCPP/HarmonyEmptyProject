@@ -5,6 +5,12 @@
   "main": "",
   "author": "",
   "license": "",
-  "dependencies": {}
+  "devDependencies": {
+    "@ohos/imageknife": "3.2.6"
+  },
+  "dependencies": {
+    "@lynx/lynx": "3.3.0",
+    "@lynx/vmsdk": "0.0.20"
+  }
 }
 
